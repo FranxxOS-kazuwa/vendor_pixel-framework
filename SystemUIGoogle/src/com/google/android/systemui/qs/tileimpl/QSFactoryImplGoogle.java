@@ -70,6 +70,9 @@ import com.android.systemui.qs.tiles.AntiFlickerTile;
 import com.android.systemui.qs.tiles.AutoBrightnessTile;
 import com.android.systemui.qs.tiles.DataSwitchTile;
 
+// Custom VoidUI Project
+import com.android.systemui.qs.tiles.DataSwitchTile;
+
 import javax.inject.Inject;
 import javax.inject.Provider;
 
@@ -129,7 +132,8 @@ public class QSFactoryImplGoogle extends QSFactoryImpl {
             Provider<AutoBrightnessTile> mautoBrightnessTileProvider,
             Provider<LiveDisplayTile> liveDisplayTileProvider,
             Provider<ReadingModeTile> readingModeTileProvider,
-            Provider<AntiFlickerTile> antiFlickerTileProvider) {
+            Provider<AntiFlickerTile> antiFlickerTileProvider,
+            Provider<DataSwitchTile> dataSwitchTileProvider) {
         super(qsHostLazy,
                 customTileBuilderProvider,
                 wifiTileProvider,
@@ -175,7 +179,8 @@ public class QSFactoryImplGoogle extends QSFactoryImpl {
                 mautoBrightnessTileProvider,
                 liveDisplayTileProvider,
                 readingModeTileProvider,
-                antiFlickerTileProvider);
+                antiFlickerTileProvider,
+                dataSwitchTileProvider);
         mReverseChargingTileProvider = reverseChargingTileProvider;
         mBatterySaverTileGoogleProvider = batterySaverTileGoogleProvider;
     }
