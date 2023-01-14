@@ -124,6 +124,9 @@ import com.google.android.systemui.reversecharging.ReverseChargingViewController
 import com.google.android.systemui.smartspace.SmartSpaceController;
 import com.google.android.systemui.statusbar.KeyguardIndicationControllerGoogle;
 
+// Burn-in Protection
+import com.android.systemui.statusbar.policy.BurnInProtectionController;
+
 import java.util.Optional;
 import java.util.concurrent.Executor;
 
@@ -143,6 +146,9 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
     private final SysuiStatusBarStateController mStatusBarStateController;
     private final SmartSpaceController mSmartSpaceController;
     private final NotificationLockscreenUserManagerGoogle mNotificationLockscreenUserManagerGoogle;
+
+    // Burn-in protection
+    private final BurnInProtectionController mBurnInProtectionController;
 
     private long mAnimStartTime;
     private int mReceivingBatteryLevel;
@@ -241,6 +247,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
             IDreamManager dreamManager,
 	    BurnInProtectionController burnInProtectionController,
             SysUiState sysUiState,
+            BurnInProtectionController burnInProtectionController,
             WallpaperNotifier wallpaperNotifier,
             SmartSpaceController smartSpaceController,
             Optional<ReverseChargingViewController> reverseChargingViewControllerOptional,
@@ -273,13 +280,11 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
                 statusBarHideIconsForBouncerManager, lockscreenShadeTransitionController,
                 featureFlags, keyguardUnlockAnimationController, mainHandler, delayableExecutor,
                 messageRouter, wallpaperManager, startingSurfaceOptional, activityLaunchAnimator,
-<<<<<<< HEAD
                 jankMonitor, deviceStateManager, wiredChargingRippleController,
                 dreamManager, burnInProtectionController, tunerService);
-=======
                 jankMonitor, deviceStateManager, wiredChargingRippleController, dreamManager,
                 tunerService, refreshNavbarHandler, sysUiState);
->>>>>>> 2f1cd53 (FrameworksGoogle: add API for disabling gestural navigation)
+                tunerService, refreshNavbarHandler, sysUiState, burnInProtectionController);
         mBatteryStateChangeCallback = new BatteryController.BatteryStateChangeCallback() {
             @Override
             public void onBatteryLevelChanged(int i, boolean z, boolean z2) {
@@ -311,6 +316,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
         mReverseChargingViewControllerOptional = reverseChargingViewControllerOptional;
         mKeyguardIndicationController = keyguardIndicationControllerGoogle;
         mStatusBarStateController = statusBarStateController;
+        mBurnInProtectionController = burnInProtectionController;
         mWallpaperNotifier = wallpaperNotifier;
         mSmartSpaceController = smartSpaceController;
         mNotificationLockscreenUserManagerGoogle = notificationLockscreenUserManagerGoogle;
